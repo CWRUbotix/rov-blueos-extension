@@ -1,7 +1,6 @@
 #!/bin/bash
 
 echo "Starting.."
-sleep infinity
 [ ! -e /var/run/nginx.pid ] && nginx&
 
 # Create a new tmux session
