@@ -1,5 +1,5 @@
 ARG ROS_DISTRO=jazzy
-FROM ros:$ROS_DISTRO-ros-base
+FROM --platform=linux/arm64/v8 ros:$ROS_DISTRO-ros-base
 
 RUN rm /var/lib/dpkg/info/libc-bin.* \
     && apt-get clean \
