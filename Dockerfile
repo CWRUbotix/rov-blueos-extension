@@ -39,6 +39,8 @@ RUN cd /home/ros2_ws/ \
 
 #  Copy in pi
 COPY ros2_ws/src/rov-25/src/pi /home/ros2_ws/src/rov-25/src/pi
+# Copy in rov_msgs
+COPY ros2_ws/src/rov-25/src/rov_msgs /home/ros2_ws/src/rov-25/src/rov_msgs
 
 # Install deps
 RUN cd /home/ros2_ws/ \
