@@ -6,7 +6,7 @@ RUN rm /var/lib/dpkg/info/libc-bin.* \
     && apt-get update \
     && apt-get -y install libc-bin \
     && apt-get install -q -y --no-install-recommends \
-    tmux nano nginx wget
+    tmux nano nginx wget curl
 # RUN apt-get install -y ros-${ROS_DISTRO}-mavros ros-${ROS_DISTRO}-mavros-extras ros-${ROS_DISTRO}-mavros-msgs
 # RUN apt-get install -y python3-dev python3-pip \
 #     && apt-get autoremove -y \
