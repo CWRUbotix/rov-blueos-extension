@@ -21,9 +21,6 @@ RUN rosdep update
 # Install Demo
 RUN apt-get install ros-${ROS_DISTRO}-demo-nodes-py -y
 
-RUN git submodule init --recursive
-RUN git submodule update -y
-
 # Copy in mavros
 COPY ros2_ws/src/rov-25/src/pi/mavros /home/ros2_ws/src/rov-25/src/pi/mavros/
 
@@ -36,17 +33,16 @@ RUN cd /home/ros2_ws/ \
 # Build mavros
 RUN cd /home/ros2_ws/ \
     && . "/opt/ros/${ROS_DISTRO}/setup.sh" \
-    && colcon build --symlink-install --packages-select libmavconn mavros_msgs mavros mavros_extras \
+    && colcon build --symlink-install \
     && . "/home/ros2_ws/install/setup.sh" \
     && ros2 run mavros install_geographiclib_datasets.sh
 
-#  Copy in rov-25
-COPY ros2_ws /home/ros2_ws
+#  Copy in pi
+COPY ros2_ws/src/rov-25/src/pi /home/ros2_ws/src/rov-25/src/pi
 
 # Install deps
 RUN cd /home/ros2_ws/ \
     && . "/opt/ros/${ROS_DISTRO}/setup.sh" \
-    # Needed for pip packages in Python3.11+
     && export PIP_BREAK_SYSTEM_PACKAGES=1 \
     && rosdep install --from-paths src --ignore-src -r -y
 
