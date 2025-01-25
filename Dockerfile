@@ -6,14 +6,14 @@ RUN rm /var/lib/dpkg/info/libc-bin.* \
     && apt-get update \
     && apt-get -y install libc-bin \
     && apt-get install -q -y --no-install-recommends \
-    tmux nano nginx wget curl
+    tmux nano nginx wget curl iputils-ping
 # RUN apt-get install -y ros-${ROS_DISTRO}-mavros ros-${ROS_DISTRO}-mavros-extras ros-${ROS_DISTRO}-mavros-msgs
 # RUN apt-get install -y python3-dev python3-pip \
 #     && apt-get autoremove -y \
 #     && apt-get clean -y \
 #     && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get install -y python3-dev python3-pip
+RUN apt-get install -y python3-dev
 
 # Update rosdep
 RUN rosdep update
@@ -45,7 +45,6 @@ COPY ros2_ws/src/rov-25/src/rov_msgs /home/ros2_ws/src/rov-25/src/rov_msgs
 # Install deps
 RUN cd /home/ros2_ws/ \
     && . "/opt/ros/${ROS_DISTRO}/setup.sh" \
-    && export PIP_BREAK_SYSTEM_PACKAGES=1 \
     && rosdep install --from-paths src --ignore-src -r -y
 
 # Build rov-25
