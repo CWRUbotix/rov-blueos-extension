@@ -1,5 +1,5 @@
 ARG ROS_DISTRO=humble
-FROM ros:$ROS_DISTRO-ros-base
+FROM docker.io/arm64v8/ros:$ROS_DISTRO-ros-base
 
 RUN rm /var/lib/dpkg/info/libc-bin.* \
     && apt-get clean \
