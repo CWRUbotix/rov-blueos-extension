@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy BlueOS Extension
-        uses: InvincibleRMC/Deploy-BlueOS-Extension@InvincibleRMC-patch-1
+        uses: BlueOS-community/Deploy-BlueOS-Extension@main
         # specify the desired variables
         with:
           docker-username: ${{ secrets.DOCKER_USERNAME }}
