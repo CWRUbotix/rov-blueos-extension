@@ -1,9 +1,7 @@
 ARG ROS_DISTRO=jazzy
 FROM ros:$ROS_DISTRO-ros-base
 
-RUN rm /var/lib/dpkg/info/libc-bin.* \
-    && apt-get clean \
-    && apt-get update \
+RUN apt-get update \
     && apt-get -y install libc-bin \
     && apt-get install -q -y --no-install-recommends \
     tmux nano nginx wget curl iputils-ping
@@ -12,8 +10,6 @@ RUN rm /var/lib/dpkg/info/libc-bin.* \
 #     && apt-get autoremove -y \
 #     && apt-get clean -y \
 #     && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get install -y python3-dev
 
 # Update rosdep
 RUN rosdep update
