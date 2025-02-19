@@ -26,3 +26,5 @@ jobs:
           # image-name should not start with blueos- (see image-prefix)
           image-name: 'cwrubotix-ros2-extension'
           build-platforms: 'linux/arm64/v8'
+          # Checkout manual above
+          skip-checkout: true
