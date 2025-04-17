@@ -17,13 +17,6 @@ RUN rosdep update
 # Install Demo
 RUN apt-get install ros-${ROS_DISTRO}-demo-nodes-py -y
 
-# Build mavros
-RUN cd /home/ros2_ws/ \
-    && . "/opt/ros/${ROS_DISTRO}/setup.sh" \
-    && colcon build --symlink-install \
-    && . "/home/ros2_ws/install/setup.sh" \
-    && ros2 run mavros install_geographiclib_datasets.sh
-
 #  Copy in pi
 COPY ros2_ws/src/rov-25/src/pi /home/ros2_ws/src/rov-25/src/pi
 # Copy in rov_msgs
