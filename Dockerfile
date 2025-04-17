@@ -17,9 +17,6 @@ RUN rosdep update
 # Install Demo
 RUN apt-get install ros-${ROS_DISTRO}-demo-nodes-py -y
 
-# Copy in mavros
-COPY ros2_ws/src/rov-25/src/pi/mavros /home/ros2_ws/src/rov-25/src/pi/mavros/
-
 # Install deps for mavros
 RUN cd /home/ros2_ws/ \
     && ls \
