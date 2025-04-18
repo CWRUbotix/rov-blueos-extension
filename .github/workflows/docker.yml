@@ -17,7 +17,7 @@ jobs:
         with:
           submodules: recursive
       - name: Deploy BlueOS Extension
-        uses: InvincibleRMC/Deploy-BlueOS-Extension@arm-skip-qemu
+        uses: BlueOS-community/Deploy-BlueOS-Extension@main
         # specify the desired variables
         with:
           docker-username: ${{ secrets.DOCKER_USERNAME }}
