@@ -18,16 +18,16 @@ RUN rosdep update
 RUN apt-get install ros-${ROS_DISTRO}-demo-nodes-py -y
 
 #  Copy in pi
-COPY ros2_ws/src/rov-25/src/pi /home/ros2_ws/src/rov-25/src/pi
+COPY ros2_ws/src/rov-26/src/pi /home/ros2_ws/src/rov-26/src/pi
 # Copy in rov_msgs
-COPY ros2_ws/src/rov-25/src/rov_msgs /home/ros2_ws/src/rov-25/src/rov_msgs
+COPY ros2_ws/src/rov-26/src/rov_msgs /home/ros2_ws/src/rov-26/src/rov_msgs
 
 # Install deps
 RUN cd /home/ros2_ws/ \
     && . "/opt/ros/${ROS_DISTRO}/setup.sh" \
     && rosdep install --from-paths src --ignore-src -r -y
 
-# Build rov-25
+# Build rov-26
 RUN cd /home/ros2_ws/ \
     && . "/opt/ros/${ROS_DISTRO}/setup.sh" \
     && colcon build --symlink-install \
